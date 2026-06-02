@@ -1,12 +1,15 @@
-import { Geist, Geist_Mono, Lora, Oxanium } from "next/font/google"
+import { Geist, Geist_Mono, Montserrat } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner"
+import { cn } from "@/lib/utils"
 
-const oxaniumHeading = Oxanium({subsets:['latin'],variable:'--font-heading'});
-
-const lora = Lora({subsets:['latin'],variable:'--font-serif'});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["500"],
+})
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -27,10 +30,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontSans.variable, fontMono.variable, "font-serif", lora.variable, oxaniumHeading.variable)}
+      className={cn("antialiased", fontSans.variable, fontMono.variable, montserrat.variable)}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   )
